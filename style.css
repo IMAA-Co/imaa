@@ -422,11 +422,111 @@ footer {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 1rem;
 }
 
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Core fixes to prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Ensure all containers respect viewport width */
+.container, 
+.nav-container, 
+.hero-content, 
+.footer-content,
+.section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix potentially overflowing elements */
+img, 
+video, 
+iframe, 
+.project-image, 
+.about-image img,
+.member-image img,
+.project-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix grid layouts to prevent overflow */
+.services-grid,
+.projects-grid,
+.team-grid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* Ensure grid items don't overflow */
+.service-card,
+.project-card,
+.team-member {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Additional responsive fixes */
+@media (max-width: 768px) {
+    /* Ensure header and navigation properly fit */
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    /* Fix any potential grid issues on mobile */
+    .services-grid,
+    .projects-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+    
+    /* Ensure content sections don't overflow */
+    .section {
+        padding: 4rem 1rem;
+    }
+    
+    /* Fix potential project filter issues */
+    .project-filters {
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+    }
+}
+
+/* Fix for extremely small screens */
+@media (max-width: 360px) {
+    /* Reduce padding further */
+    .section,
+    .nav-container,
+    .hero-content {
+        padding: 0.5rem;
+    }
+    
+    .section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
 .team-member {
     background-color: var(--secondary);
     border-radius: 10px;
@@ -604,3 +704,6 @@ footer {
     pointer-events: none;
     opacity: 0.5;
 }
+
+
+
