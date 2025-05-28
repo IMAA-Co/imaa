@@ -678,6 +678,7 @@
 
       textarea.form-control {
         min-height: 150px;
+        max-height: 150px;
         resize: vertical;
       }
 
