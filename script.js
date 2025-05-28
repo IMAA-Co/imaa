@@ -32,3 +32,23 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         document.getElementById('successMessage').style.display = 'none';
     }, 3000);
 });
+
+// Project Filters
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Remove 'active' from all buttons
+    filterButtons.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const filter = this.getAttribute('data-filter');
+    projectCards.forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
